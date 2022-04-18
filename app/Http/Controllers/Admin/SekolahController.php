@@ -28,6 +28,9 @@ class SekolahController extends Controller
     {
         $dtSekolah = null;
         $this->data['dtSekolah'] = $dtSekolah;
+        $this->data['optJenjang'] = [1=>'SD', 2=>'SMP', 3=>'SMA', 4=>'Kuliah'];
+        $this->data['optSatus'] = [1=>'Negeri', 2=>'Swasta'];
+        // dd($this->data);
         $this->data['pageTitle'] = 'Tambah Sekolah';
 
         return view('admin.sekolah.form', $this->data);
@@ -58,27 +61,28 @@ class SekolahController extends Controller
 
     public function show($id)
     {
-        //
+        $dtSekolah = Sekolah::findOrFail($id);
+        $this->data['dtSekolah'] = $dtSekolah;
+        $this->data['updateID'] = $id;
+        $this->data['optJenjang'] = [1=>'SD', 2=>'SMP', 3=>'SMA', 4=>'Kuliah'];
+        $this->data['optSatus'] = [1=>'Negeri', 2=>'Swasta'];
+        // dd($this->data);
+        $this->data['pageTitle'] = 'Tambah Sekolah';
+
+        return view('admin.sekolah.v_show', $this->data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $dtSekolah = Sekolah::findOrFail($id);
+        $this->data['dtSekolah'] = $dtSekolah;
+        $this->data['updateID'] = $id;
+        $this->data['optJenjang'] = [1=>'SD', 2=>'SMP', 3=>'SMA', 4=>'Kuliah'];
+        $this->data['optSatus'] = [1=>'Negeri', 2=>'Swasta'];
+        $this->data['pageTitle'] = 'Update Sekolah';
+        return view('admin.sekolah.form', $this->data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //

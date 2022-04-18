@@ -56,14 +56,26 @@
               </div>
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Jenjang</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="jenjang" value="{{ !empty($dtSekolah) ? $dtSekolah->jenjang : old('jenjang') }}" placeholder="Jenjang Sekolah">
+                <div class="col-sm-6">
+                  <select name="jenjang_id" id="jenjang_id" class="form-control">
+                    <option value="" holder>--Please select--</option>
+                    @foreach($optJenjang as $key => $value)
+                    <option value="<?= $key ?>" @if(!empty($dtSekolah) && $dtSekolah->jenjang_id == $key) selected @endif><?= $value ?></option>
+                    @endforeach
+                  </select>
+                  
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Status</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="status" value="{{ !empty($dtSekolah) ? $dtSekolah->status : old('status') }}" placeholder="Status Sekolah">
+                <div class="col-sm-6">
+                  <select name="status" id="status" class="form-control">
+                    <option value="" holder>--Please select--</option>
+                    @foreach($optSatus as $key => $value)
+                    <option value="<?= $key ?>" @if(!empty($dtSekolah) && $dtSekolah->status == $key) selected @endif><?= $value ?></option>
+                    @endforeach
+                  </select>
+                  
                 </div>
               </div>
               <div class="form-group row">

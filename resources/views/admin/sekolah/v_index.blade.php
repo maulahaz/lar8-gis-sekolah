@@ -68,16 +68,17 @@
                   <tr>
                     <td>{{$no++}}</td>
                     <td>{{$row->nama}}</td>
-                    <td>{{$row->jenjang}}</td>
+                    <td>{{$row->jenjang_id}}</td>
                     <td>{{$row->status}}</td>
-                    <td>{{$row->kecamatan}}</td>
+                    <td>{{$row->kecamatan_id}}</td>
                     <td>
-                    	<a href="{{ url('admin/sekolah/edit', $row->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                    	<a href="{{ url('admin/sekolah', $row->id) }}" class="btn btn-info btn-sm"><i class="fa fa-search"></i></a>
+                    	<!-- <a href="{{ url('admin/sekolah/edit', $row->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                     	<form action="{{ url('admin/sekolah/destroy', $row->id) }}" method="POST" style="display:inline-block">
 	                      @csrf
 	                      @method('DELETE')
 	                      <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-	                    </form>
+	                    </form> -->
                     </td>
                     
                   </tr>

@@ -105,7 +105,7 @@
          <!-- KECAMATAN -->
           <li class="nav-item has-treeview {{request()->is('admin/kecamatan') ? 'menu-open' : 'menu-close'}}">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+              <i class="nav-icon fas fa-globe"></i>
               <p>Kecamatan<i class="right fas fa-angle-left"></i></p>
             </a>
             <ul class="nav nav-treeview">
@@ -127,7 +127,7 @@
           <!-- SEKOLAH -->
           <li class="nav-item has-treeview {{request()->is('admin/sekolah') ? 'menu-open' : 'menu-close'}}">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+              <i class="nav-icon fas fa-archive"></i>
               <p>Sekolah<i class="right fas fa-angle-left"></i></p>
             </a>
             <ul class="nav nav-treeview">
