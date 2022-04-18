@@ -36,46 +36,47 @@
           <!-- /.card-header -->
 
           <!-- form start -->
-            @if (!empty($dtKecamatan))
-            <form action="{{ url('kecamatan/create', [$updateID]) }}" class="form-horizontal" id="frm_update" name="frm_update" method="POST">
+            @if (!empty($dtSekolah))
+            <form action="{{ url('admin/sekolah/create', [$updateID]) }}" class="form-horizontal" id="frm_update" name="frm_update" method="POST">
               @method('PATCH')
 
             @else
 
-            <form id="frm_create" name="frm_create" action="{{ url('kecamatan/store') }}" method="POST" class="form-horizontal">  
+            <form id="frm_create" name="frm_create" action="{{ url('admin/sekolah') }}" method="POST" class="form-horizontal">  
                 
             @endif
 
             {{ csrf_field() }}
             <div class="card-body">
               <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Nama Sekolah</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="nama" value="{{ !empty($dtSekolah) ? $dtSekolah->nama : old('nama') }}" placeholder="Nama Sekolah">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Jenjang</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="jenjang" value="{{ !empty($dtSekolah) ? $dtSekolah->jenjang : old('jenjang') }}" placeholder="Jenjang Sekolah">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Status</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="status" value="{{ !empty($dtSekolah) ? $dtSekolah->status : old('status') }}" placeholder="Status Sekolah">
+                </div>
+              </div>
+              <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Kecamatan</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" name="nama" value="{{ !empty($dtKecamatan) ? $dtKecamatan->nama : null }}" placeholder="Nama Kecamatan">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Geo Json</label>
-                <div class="col-sm-10">
-                  <textarea class="form-control" name="geojson" id="geojson" rows="4" placeholder="Geo Json">{{ !empty($dtKecamatan) ? $dtKecamatan->geojson : null }}</textarea>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Warna</label>
-                <div class="col-sm-4">
-                  <div class="input-group my-colorpicker colorpicker-element" data-colorpicker-id="2">
-                    <input type="text" class="form-control" data-original-title="" title="" placeholder="Pilih Warna">
-                    <div class="input-group-append">
-                      <span class="input-group-text"><i class="fas fa-square"></i></span>
-                    </div>
-                  </div>
+                  <input type="text" class="form-control" name="kecamatan" value="{{ !empty($dtSekolah) ? $dtSekolah->kecamatan : old('kecamatan') }}" placeholder="Kecamatan">
                 </div>
               </div>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
               <button type="submit" class="btn btn-info">Save</button>
-              <a href="{{ url('admin/kecamatan') }}" class="btn btn-default float-right">Cancel</a>
+              <a href="{{ url('admin/sekolah') }}" class="btn btn-default float-right">Cancel</a>
             </div>
             <!-- /.card-footer -->
           </form>
@@ -89,16 +90,8 @@
 </section>
 
 @push('customJs')
-<script src="{{ url('public/t_adminlte') }}/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <script>
-  $(function () {
-    //Colorpicker
-    $('.my-colorpicker').colorpicker();
 
-    $('.my-colorpicker').on('colorpickerChange', function(event) {
-      $('.my-colorpicker .fa-square').css('color', event.color.toString());
-    });
-  });
 </script>
 @endpush
 

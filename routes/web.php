@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\WebController;
+use App\Http\Controllers\TugasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,9 @@ Route::get('/map', [WebController::class, 'map']);
 Route::get('admin/kecamatan', 'Admin\KecamatanController@index')->name('kecamatan');
 Route::get('admin/kecamatan/create', 'Admin\KecamatanController@create');
 
+//--Sekolah:
+Route::resource('admin/sekolah', 'Admin\SekolahController');
+
 //--Category:
 Route::resource('category', 'CategoryController');
 //--Post:
@@ -59,3 +63,7 @@ Route::get('admin/user/create', 'Admin\UserController@create');
 
 //--Materi:
 Route::resource('admin/materi', 'Admin\MateriController');
+
+//--TUGAS:
+Route::get('tugas/upload', [TugasController::class, 'uploadForm']);
+Route::post('tugas/upload', [TugasController::class, 'submitUpload']);

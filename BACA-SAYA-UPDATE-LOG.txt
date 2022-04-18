@@ -1,0 +1,24 @@
+Project Name	: Gis Sekolah
+Project Desc	: Ngikutin Tutor:
+				  + Padang Tekno: Gis Sekolah 
+                  + xx : Comment
+                  + etc
+Background	    : Belajar Laravel
+Start Date	    : Feb-2021
+Developer	    : MHz
+//
+Framework       : Laravel 8 (7.29)
+DB		        : MySQL, DB: gis-sekolah
+Admin Template	: AdminLTE3
+Home Template   : --
+====================================================================================================
+
+UPDATE 2022-03-29 @MHz-Z470 :
+- CRUD Belajar MateriController utk Project Web_Bootcamp Abu Musa
+
+UPDATE 2022-03-28 @MHz-Z470 :
+MHzController:
+- Bikin Generate Hash Password. Pake: "use Illuminate\Support\Facades\Hash;"
+
+
+

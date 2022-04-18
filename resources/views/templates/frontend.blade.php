@@ -28,6 +28,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('/public/t_adminlte') }}/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('/public/t_adminlte') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="{{ asset('/public/t_adminlte') }}/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('/public/t_adminlte') }}/dist/js/adminlte.min.js"></script>
 <!-- Leaflet -->
@@ -171,5 +173,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </footer>
 </div>
 <!-- ./wrapper -->
+
+<script type="text/javascript">
+$(document).ready(function () {
+  bsCustomFileInput.init();
+});
+</script>
+
 </body>
 </html>

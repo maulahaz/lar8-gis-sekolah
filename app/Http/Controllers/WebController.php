@@ -23,7 +23,7 @@ class WebController extends Controller
         // dd('WebController');
         $this->data['pageTitle'] = 'Pemetaan';
         $this->data['dtKecamatan'] = $this->WebModel->getDataKecamatan();
-        dd($this->data);
+        // dd($this->data);
         // return view('web.index', $this->data);
         return view('web.map', $this->data);
     }

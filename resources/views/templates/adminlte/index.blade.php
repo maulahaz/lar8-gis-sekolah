@@ -13,6 +13,9 @@
   <!-- Tempusdominus Bbootstrap 4 -->
   <link rel="stylesheet" href="{{url('public/t_adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
   <!-- iCheck -->
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="{{ url('public/t_adminlte') }}/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+  <!--  -->
   <link rel="stylesheet" href="{{url('public/t_adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   <!-- JQVMap -->
   <link rel="stylesheet" href="{{url('public/t_adminlte/plugins/jqvmap/jqvmap.min.css')}}">
@@ -99,6 +102,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+         <!-- KECAMATAN -->
           <li class="nav-item has-treeview {{request()->is('admin/kecamatan') ? 'menu-open' : 'menu-close'}}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
@@ -119,6 +123,29 @@
               </li>
             </ul>
           </li>
+
+          <!-- SEKOLAH -->
+          <li class="nav-item has-treeview {{request()->is('admin/sekolah') ? 'menu-open' : 'menu-close'}}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>Sekolah<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('admin/sekolah') }}" class="nav-link {{request()->is('admin/sekolah') ? 'active' : ''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('admin/sekolah/report') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Report</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!--  -->
           <li class="nav-item has-treeview {{request()->is('post') ? 'menu-open' : 'menu-close'}}">
             <a href="#" class="nav-link {{request()->is('post') ? 'active' : ''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -267,6 +294,7 @@
 <script src="{{url('public/t_adminlte/dist/js/demo.js')}}"></script>
 
 @yield('jsFile')
+@stack('customJs')
 
 </body>
 </html>
