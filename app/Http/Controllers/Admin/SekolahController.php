@@ -64,7 +64,7 @@ class SekolahController extends Controller
         $dtSekolah = Sekolah::findOrFail($id);
         $this->data['dtSekolah'] = $dtSekolah;
         $this->data['updateID'] = $id;
-        $this->data['optJenjang'] = [1=>'SD', 2=>'SMP', 3=>'SMA', 4=>'Kuliah'];
+        $this->data['optJenjang'] = ['SD','SMP','SMA','Kuliah'];
         $this->data['optSatus'] = [1=>'Negeri', 2=>'Swasta'];
         // dd($this->data);
         $this->data['pageTitle'] = 'Tambah Sekolah';
@@ -77,7 +77,7 @@ class SekolahController extends Controller
         $dtSekolah = Sekolah::findOrFail($id);
         $this->data['dtSekolah'] = $dtSekolah;
         $this->data['updateID'] = $id;
-        $this->data['optJenjang'] = [1=>'SD', 2=>'SMP', 3=>'SMA', 4=>'Kuliah'];
+        $this->data['optJenjang'] = ['SD','SMP','SMA','Kuliah'];
         $this->data['optSatus'] = [1=>'Negeri', 2=>'Swasta'];
         $this->data['pageTitle'] = 'Update Sekolah';
         return view('admin.sekolah.form', $this->data);

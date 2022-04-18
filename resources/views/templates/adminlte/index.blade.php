@@ -29,6 +29,8 @@
   <link rel="stylesheet" href="{{url('public/t_adminlte/plugins/summernote/summernote-bs4.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -289,9 +291,11 @@
 <!-- AdminLTE App -->
 <script src="{{url('public/t_adminlte/dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{url('public/t_adminlte/dist/js/pages/dashboard.js')}}"></script>
+<!-- <script src="{{url('public/t_adminlte/dist/js/pages/dashboard.js')}}"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('public/t_adminlte/dist/js/demo.js')}}"></script>
+<!-- Leaflet -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
 @yield('jsFile')
 @stack('customJs')

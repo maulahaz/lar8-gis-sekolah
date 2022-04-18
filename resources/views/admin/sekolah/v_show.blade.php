@@ -68,7 +68,7 @@
 		            <div class="input-group mb-2">
 		                <div class="custom-file">
 		                	<input type="hidden" name="foto_hide">
-                            <input type="file" class="custom-file-input" id="foto" name="foto" onchange="preview()">
+                            <input type="file" class="custom-file-input" id="foto" name="foto" onchange="preview()" accept="image/*,.pdf">
                             <label class="custom-file-label" for="foto">Masukan File Gambar</label>
 		                </div>
 		            </div>
