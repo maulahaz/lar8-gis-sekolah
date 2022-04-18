@@ -35,7 +35,7 @@
           <!-- /.card-header -->
           <!-- form start -->
           @if (!empty($dtSekolah))
-          <form action="{{ url('admin/sekolah/create', [$updateID]) }}" class="form-horizontal" id="frm_update" name="frm_update" method="POST">
+          <form action="{{ url('admin/sekolah', [$updateID]) }}" class="form-horizontal" id="frm_update" name="frm_update" method="POST">
             @method('PATCH')
             @else
           <form id="frm_create" name="frm_create" action="{{ url('admin/sekolah') }}" method="POST" class="form-horizontal">
@@ -51,7 +51,7 @@
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Jenjang</label>
                 <div class="col-sm-6">
-                  <select name="jenjang_id" id="jenjang_id" class="form-control">
+                  <select name="jenjang" id="jenjang" class="form-control">
                     <option value="" holder>--Please select--</option>
                     @foreach($optJenjang as $value)
                     <option value="<?= $value ?>" @if(!empty($dtSekolah) && $dtSekolah->jenjang_id == $value) selected @endif><?= $value ?></option>
@@ -72,8 +72,13 @@
               </div>
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Kecamatan</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="kecamatan" value="{{ !empty($dtSekolah) ? $dtSekolah->kecamatan_id : old('kecamatan') }}" placeholder="Kecamatan">
+                <div class="col-sm-6">
+                  <select name="kecamatan" id="kecamatan" class="form-control">
+                    <option value="" holder>--Please select--</option>
+                    @foreach($optKecamatan as $row)
+                    <option value="<?= $row->id ?>" @if(!empty($dtSekolah) && $dtSekolah->kecamatan_id == $row->id ) selected @endif><?= $row->nama  ?></option>
+                    @endforeach
+                  </select>
                 </div>
               </div>
               <div class="form-group row">

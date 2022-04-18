@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Sekolah;
+use App\Models\Kecamatan;
+use Session;
 
 class SekolahController extends Controller
 {
@@ -29,6 +31,7 @@ class SekolahController extends Controller
         $dtSekolah = null;
         $this->data['dtSekolah'] = $dtSekolah;
         $this->data['optJenjang'] = [1=>'SD', 2=>'SMP', 3=>'SMA', 4=>'Kuliah'];
+        $this->data['optKecamatan'] = Kecamatan::all();
         $this->data['optSatus'] = [1=>'Negeri', 2=>'Swasta'];
         // dd($this->data);
         $this->data['pageTitle'] = 'Tambah Sekolah';
@@ -42,9 +45,12 @@ class SekolahController extends Controller
 
         $post = Sekolah::create([
             'nama' => $request->nama,
-            'jenjang' => $request->jenjang,
+            'jenjang_id' => $request->jenjang,
             'status' => $request->status,
-            'kecamatan' => $request->kecamatan,
+            'kecamatan_id' => $request->kecamatan,
+            'posisi' => $request->posisi,
+            'alamat' => 'Alamatnya di koordinat ini : '.$request->posisi,
+            'notes' => $request->notes,
         ]);
         return redirect('admin/sekolah')->with('success', 'Well done, New data created!');
     }
@@ -56,6 +62,7 @@ class SekolahController extends Controller
             'jenjang' => 'required',
             'status' => 'required',
             'kecamatan' => 'required',
+            'posisi' => 'required',
         ]);
     }
 
@@ -64,7 +71,8 @@ class SekolahController extends Controller
         $dtSekolah = Sekolah::findOrFail($id);
         $this->data['dtSekolah'] = $dtSekolah;
         $this->data['updateID'] = $id;
-        $this->data['optJenjang'] = ['SD','SMP','SMA','Kuliah'];
+        $this->data['optJenjang'] = [1=>'SD', 2=>'SMP', 3=>'SMA', 4=>'Kuliah'];
+        $this->data['optKecamatan'] = Kecamatan::all();
         $this->data['optSatus'] = [1=>'Negeri', 2=>'Swasta'];
         // dd($this->data);
         $this->data['pageTitle'] = 'Tambah Sekolah';
@@ -77,7 +85,8 @@ class SekolahController extends Controller
         $dtSekolah = Sekolah::findOrFail($id);
         $this->data['dtSekolah'] = $dtSekolah;
         $this->data['updateID'] = $id;
-        $this->data['optJenjang'] = ['SD','SMP','SMA','Kuliah'];
+        $this->data['optJenjang'] = [1=>'SD', 2=>'SMP', 3=>'SMA', 4=>'Kuliah'];
+        $this->data['optKecamatan'] = Kecamatan::all();
         $this->data['optSatus'] = [1=>'Negeri', 2=>'Swasta'];
         $this->data['pageTitle'] = 'Update Sekolah';
         return view('admin.sekolah.form', $this->data);
@@ -85,17 +94,33 @@ class SekolahController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $this->_validateData($request);
+
+        $postedData = [
+            'nama' => $request->nama,
+            'jenjang_id' => $request->jenjang,
+            'status' => $request->status,
+            'kecamatan_id' => $request->kecamatan,
+            'posisi' => $request->posisi,
+            'alamat' => 'Alamatnya di koordinat ini : '.$request->posisi,
+            'notes' => $request->notes,
+        ];
+
+        $dtSekolah = Sekolah::findOrFail($id);
+        if ($dtSekolah->update($postedData)) {
+            Session::flash('success', 'Well done, Data has been updated.');
+        }
+        return redirect('admin/sekolah');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $dtSekolah = Sekolah::findOrFail($id);
+        // dd($dtSekolah);
+        if ($dtSekolah->delete()) {
+            Session::flash('success', 'Data has been deleted');
+        }
+
+        return redirect('admin/sekolah');
     }
 }

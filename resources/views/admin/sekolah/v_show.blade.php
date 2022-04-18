@@ -45,7 +45,7 @@
 		                    <dt class="col-sm-3">Status</dt>
 		                    <dd class="col-sm-9">: {{ $dtSekolah['status'] }}</dd>
 		                    <dt class="col-sm-3">Kecamatan</dt>
-		                    <dd class="col-sm-9">: {{ $dtSekolah['kecamatan'] }}</dd>
+		                    <dd class="col-sm-9">: {{ $dtSekolah['kecamatan_id'] }}</dd>
 		                </dl>
 		            </div>
 		        </div>

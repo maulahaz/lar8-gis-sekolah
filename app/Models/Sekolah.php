@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Sekolah extends Model
 {
     protected $table = 'tbl_sekolah';
-    protected $fillable 	= ['nama','jenjang_id','status','kecamatan_id'];
+    protected $fillable 	= ['nama','jenjang_id','status','kecamatan_id','alamat','posisi','notes','foto','created_at','updated_at'];
 }
