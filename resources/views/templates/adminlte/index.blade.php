@@ -270,6 +270,8 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{url('public/t_adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- bs-custom-file-input -->
+<script src="{{ url('public/t_adminlte') }}/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- ChartJS -->
 <script src="{{url('public/t_adminlte/plugins/chart.js/Chart.min.js')}}"></script>
 <!-- Sparkline -->
@@ -297,8 +299,15 @@
 <!-- Leaflet -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
+
 @yield('jsFile')
 @stack('customJs')
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    bsCustomFileInput.init();
+  });
+</script>
 
 </body>
 </html>

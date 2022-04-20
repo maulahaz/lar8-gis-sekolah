@@ -113,6 +113,43 @@ class SekolahController extends Controller
         return redirect('admin/sekolah');
     }
 
+    public function uploadFile(Request $request, $id)
+    {
+        $this->validate($request,[
+            'foto' => 'required',
+        ]);
+
+        if($request->has('foto')){
+            $image = $request->file('foto');
+            $newImage = time().'-'.$image->getClientOriginalName();
+            // $image->move('public/uploads/sekolah/', $newImage);
+            $image->move(public_path('uploads/sekolah'), $newImage);
+            $postedData['foto'] = $newImage;
+
+            $dtSekolah = Sekolah::findOrFail($id);
+
+            if ($dtSekolah->update($postedData)) {
+                Session::flash('success', 'File has been uploaded.');
+            }
+        }
+        
+        return redirect('admin/sekolah');
+    }
+
+    public function removeFile(Request $request, $id)
+    {
+        $dtSekolah = Sekolah::findOrFail($id);
+        $foto = $dtSekolah->foto;
+        $file_path = public_path().'/uploads/sekolah/'.$foto;
+        $updateData['foto'] = null;
+        if(file_exists($file_path)){
+            unlink($file_path);
+            $dtSekolah->update($updateData);
+       }
+
+       return redirect()->back()->with('success', 'File has been removed.');
+    }
+
     public function destroy($id)
     {
         $dtSekolah = Sekolah::findOrFail($id);

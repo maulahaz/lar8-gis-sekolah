@@ -54,6 +54,7 @@
                 <thead>
                   <tr>
                     <th>No.</th>
+                    <th>Foto</th>
                     <th>Nama Sekolah</th>
                     <th>Jenjang</th>
                     <th>Status</th>
@@ -67,6 +68,7 @@
                 	@foreach($dtSekolah as $row)
                   <tr>
                     <td>{{$no++}}</td>
+                    <td><img src="{{ url('public/uploads/sekolah/'.$row['foto']) }}" alt="" width="100px"></td>
                     <td>{{$row->nama}}</td>
                     <td>{{$row->jenjang_id}}</td>
                     <td>{{$row->status}}</td>

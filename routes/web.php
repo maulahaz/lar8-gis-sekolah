@@ -45,6 +45,8 @@ Route::get('admin/kecamatan/create', 'Admin\KecamatanController@create');
 
 //--Sekolah:
 Route::resource('admin/sekolah', 'Admin\SekolahController');
+Route::post('admin/sekolah/upload-file/{id}', 'Admin\SekolahController@uploadFile');
+Route::post('admin/sekolah/remove-file/{id}', 'Admin\SekolahController@removeFile');
 
 //--Category:
 Route::resource('category', 'CategoryController');

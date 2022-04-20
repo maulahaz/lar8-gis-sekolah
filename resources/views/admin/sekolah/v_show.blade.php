@@ -39,7 +39,7 @@
 		            <div class="record-details">
 		                <dl class="row">
 		                    <dt class="col-sm-3">Nama Sekolah</dt>
-		                    <dd class="col-sm-9">: {{ $dtSekolah['nama'] }}</dd>
+		                    <dd class="col-sm-9">: {{ $dtSekolah['nama']}} </dd>
 		                    <dt class="col-sm-3">Jenjang</dt>
 		                    <dd class="col-sm-9">: {{ $dtSekolah['jenjang_id'] }}</dd>
 		                    <dt class="col-sm-3">Status</dt>
@@ -61,8 +61,9 @@
 		        </div>
 		        <!-- /.card-header -->
 		        <div class="card-body">
-		            <?php if ($dtSekolah['foto'] != null) : ?>
-	            	<form id="frm_upload" name="frm_upload" action="{{ url('admin/sekolah') }}" method="POST" class="form-horizontal"> 
+		            <?php if ($dtSekolah['foto'] == null) : ?>
+	            	<form id="frm_upload" name="frm_upload" action="{{ url('admin/sekolah/upload-file/'.$updateID) }}" method="POST" class="form-horizontal" enctype="multipart/form-data"> 
+            		@csrf
 		            <p class="text-center">Gambar belum ada.</p>
 		            <p class="text-center">Silahkan pilih gambar kemudian tekan UPLOAD.</p>
 		            <div class="input-group mb-2">
@@ -77,8 +78,8 @@
 		            <?php else: ?>
 		            <div class="text-center">
 		                <p><button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#delete-picture-modal"><i class="fa fa-trash"></i> Delete Foto</button></p>
-		                <p style="width:200px; text-align: center; display: inline-block;">
-		                    <img src="{{ url('uploads/sekolah/'.$dtSekolah['foto']) }}" alt="picture preview" class="img-fluid">
+		                <p style="text-align: center; display: inline-block;">
+		                    <img src="{{ url('public/uploads/sekolah/'.$dtSekolah['foto']) }}" alt="picture preview" class="img-fluid">
 		                </p>
 		            </div>
 		            <?php endif; ?>
@@ -93,6 +94,34 @@
   </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
+
+<!-- DELETE PICTURE -->
+<!-- ===================================================== -->
+<div class="modal fade" id="delete-picture-modal" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="frm_delete" name="frm_delete" action="{{ url('admin/sekolah/remove-file/'.$updateID) }}" method="POST">
+      @csrf
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><i class="fa fa-trash"></i> Delete Picture</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure?</p>
+          <p>You are about to delete the picture.  This cannot be undone. Do you really want to do this?</p> 
+        </div>
+        <div class="modal-footer justify-content-between">
+        	<button class="btn btn-sm btn-outline-info" data-dismiss="modal">Cancel</button>
+        	<button type="submit" class="btn btn-sm btn-danger">Yes - Delete Now</button>
+        </div>
+      </div>
+      </form>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 
 @push('customJs')
 <script>

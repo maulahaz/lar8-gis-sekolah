@@ -89,7 +89,7 @@ class PostController extends Controller
         $postedData['content'] = $request->content;
 
         if($request->has('image')){
-            $image = $request->image;
+            $image = $request->image; //--should be : $request->file('image');
             $newImage = time().'-'.$image->getClientOriginalName();
             $image->move('public/uploads/post/', $newImage);
             $postedData['image'] = 'public/uploads/post/'.$newImage;
