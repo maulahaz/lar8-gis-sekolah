@@ -59,9 +59,10 @@ Route::resource('post', 'PostController');
 //-Dashboard:
 Route::get('mhz', 'MHzController@index')->name('mhz');
 
-//--Member:
-Route::get('admin/user', 'Admin\UserController@index')->name('user');
-Route::get('admin/user/create', 'Admin\UserController@create');
+//--User/Member:
+Route::resource('admin/user', 'Admin\UserController');
+// Route::get('admin/user', 'Admin\UserController@index')->name('user');
+// Route::get('admin/user/create', 'Admin\UserController@create');
 
 //--Materi:
 Route::resource('admin/materi', 'Admin\MateriController');

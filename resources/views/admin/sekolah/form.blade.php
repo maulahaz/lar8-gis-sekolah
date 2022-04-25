@@ -152,7 +152,7 @@
     });
 
   var map = L.map('map', {
-      center: [-6.013302548258976, 106.04975530035932], //-Cilegon
+      center: [<?= $dtSekolah->posisi ?>], //-Cilegon
       zoom: 10,
       layers: [peta1]
   }); 
@@ -167,7 +167,7 @@
   L.control.layers(baseMaps).addTo(map); 
 
   //--Get Coordinat:
-  var curLocation = [-6.013302548258976, 106.04975530035932];
+  var curLocation = [<?= $dtSekolah->posisi ?>];
   map.attributionControl.setPrefix(false);
 
   var marker = new L.marker(curLocation,{
