@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\UserModel;
-use App\Models\User;
+use App\Models\Roles;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -22,8 +24,9 @@ class UserController extends Controller
 
     public function index()
     {
-        // $this->data['dtUser'] = $this->UserModel->getData();
-        $this->data['dtUser'] = User::paginate(10);
+        //--Yang 99/Webmaster nggak usah ditampilin:
+        $this->data['dtUser'] = User::where('role','!=','99')->paginate(10);
+
         $this->data['pageTitle'] = 'Atur Data Pengguna';
         return view('admin.user.v_index', $this->data);
     }
@@ -55,5 +58,41 @@ class UserController extends Controller
         $this->data['updateID'] = $id;
         $this->data['pageTitle'] = 'Perbaharui Data Pengguna';
         return view('admin.user.form', $this->data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        // dd($request);
+        $this->_validateData($request);
+
+        $postedData = [
+            'username' => $request->username,
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+            'status' => $request->status,
+        ];
+
+        $updated = DB::table('users')->where('id', $id)->update($postedData);
+        if($updated){
+            return redirect('admin/user')->with('success', 'Well done, Data has been updated.');
+        }else{
+            return redirect()->back()->with('error', 'Something wrong during update process. Please contact Admin.');
+        }
+
+        //--OR--
+        // User::where('id',$id)->update($postedData);
+        // return redirect('admin/user')->with('success', 'Well done, Data has been updated.');
+    }
+
+    public function _validateData($request)
+    {
+        $this->validate($request,[
+            'username' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'role' => 'required',
+            'status' => 'required',
+        ]);
     }
 }

@@ -63,8 +63,8 @@
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Level</label>
                 <div class="col-sm-4">
-                  <!-- Opsi: 88/Admin dan 99/Webmaster di hilangkan -->
-                  <?php $optRoles = ['1' => 'User', '2' => 'Supervisor', '5' => 'Manager'] ?>
+                  <!-- Opsi: 99/Webmaster di hilangkan -->
+                  <?php $optRoles = [1 => 'User', 2 => 'Supervisor', 5 => 'Manager',88=>'Admin'] ?>
                   <select name="role" id="role" class="form-control">
                     <option value="" holder>--Pilih--</option>
                     @foreach($optRoles as $key => $value)
@@ -76,7 +76,7 @@
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Status</label>
                 <div class="col-sm-4">
-                  <?php $optRoles = ['1' => 'Active', '0' => 'In-Active'] ?>
+                  <?php $optRoles = [1 => 'Active', 0 => 'In-Active'] ?>
                   <select name="status" id="status" class="form-control">
                     <option value="" holder>--Pilih--</option>
                     @foreach($optRoles as $key => $value)
