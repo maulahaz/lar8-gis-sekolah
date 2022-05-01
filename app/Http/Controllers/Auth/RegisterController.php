@@ -34,12 +34,18 @@ class RegisterController extends Controller
         ]);
     	// dd($request->all());
 
-        User::create([
+        $user = User::create([
             'name'  		=>  $request->name,
             'username' 		=>  $request->username,
-            'email'  		=>  $request->email,
-            'password'  	=>  Hash::make($request->password),
+            'email'         =>  $request->email,
+            'password'      =>  Hash::make($request->password),
+            'picture'       =>  'user.png',
+            'role'          =>  '1',
+            'status'        =>  '1',
+            // 'created_at'  	=>  date('Y-m-d H:i:s'),
         ]);
+
+        auth()->login($user);
 
         return redirect()->route('dashboard');
     }

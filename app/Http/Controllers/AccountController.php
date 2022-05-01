@@ -1,21 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserModel;
-use App\Models\Roles;
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use MHzHelper;
 
-class UserController extends Controller
+class AccountController extends Controller
 {
     public function __construct()
     {
         $this->middleware(['auth']);
-
-        $this->UserModel = new UserModel();
         
         // $this->data['pageTitle'] = 'CRUD User';
         // $this->data['currentMenu'] = 'catalog';
@@ -24,40 +20,28 @@ class UserController extends Controller
 
     public function index()
     {
-        //--Yang 99/Webmaster nggak usah ditampilin:
-        $this->data['dtUser'] = User::where('role','!=','99')->paginate(10);
-
-        $this->data['pageTitle'] = 'Atur Data Pengguna';
-        return view('admin.user.v_index', $this->data);
-    }
-
-    public function create()
-    {
-        $dtUser = null;
-        $this->data['dtUser'] = $dtUser;
-        // dd($this->data);
-        $this->data['pageTitle'] = 'Tambah Data Pengguna';
-        return view('admin.user.form', $this->data);
-    }
-
-    public function show($id)
-    {
-        $dtUser = User::findOrFail($id);
-        $this->data['dtUser'] = $dtUser;
-        $this->data['updateID'] = $id;
+        $dtUser = DB::table('users')
+                ->where('username', Auth()->user()->username)
+                ->get()->first();
+        // dd($dtUser);
+        // MHzHelper::json($dtUser,true);
+        $this->data['dtUser'] = (array) $dtUser;
+        $this->data['updateID'] = Auth()->user()->id;
         // dd($this->data);
         $this->data['pageTitle'] = 'Data Detail Pengguna';
 
-        return view('admin.user.v_show', $this->data);
+        return view('admin.account.v_show', $this->data);
     }
 
     public function edit($id)
     {
-        $dtUser = User::findOrFail($id);
+        $dtUser = DB::table('users')
+                ->where('id', $id)
+                ->first();
         $this->data['dtUser'] = $dtUser;
         $this->data['updateID'] = $id;
         $this->data['pageTitle'] = 'Perbaharui Data Pengguna';
-        return view('admin.user.form', $this->data);
+        return view('admin.account.v_form', $this->data);
     }
 
     public function update(Request $request, $id)
@@ -92,7 +76,7 @@ class UserController extends Controller
         }
         $this->data['updateID'] = $id;
         $this->data['pageTitle'] = 'Ganti Password';
-        return view('admin.user.v_changepass', $this->data);
+        return view('admin.account.v_changepass', $this->data);
     }
 
     public function _validateData($request)

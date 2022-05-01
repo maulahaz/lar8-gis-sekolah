@@ -41,7 +41,7 @@
     <!-- Small boxes (Stat box) -->
     <div class="row">
       <div class="col-12">
-        Welcome Admin
+        Welcome Webmaster
       </div>      
     </div>
     <!-- /.row -->
