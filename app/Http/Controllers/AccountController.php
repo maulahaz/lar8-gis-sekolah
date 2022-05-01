@@ -58,10 +58,10 @@ class AccountController extends Controller
         ];
 
         $updated = DB::table('users')->where('id', $id)->update($postedData);
-        if($updated){
-            return redirect('admin/user')->with('success', 'Well done, Data has been updated.');
+        if ($updated) {
+            return redirect('admin/user')->with('success', 'Data berhasil di update.');
         }else{
-            return redirect()->back()->with('error', 'Something wrong during update process. Please contact Admin.');
+            return redirect()->back()->with('error', 'Error pada saat update data. Silahkan hubungi Administrator.');
         }
 
         //--OR--

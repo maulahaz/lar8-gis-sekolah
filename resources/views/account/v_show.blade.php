@@ -99,6 +99,7 @@
 <div class="modal fade" id="delete-data-modal" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
       <form action="{{ url('my-account/destroy/'.$updateID) }}" method="POST">
+      <!-- @method('DELETE') -->
       @csrf
       <div class="modal-content">
         <div class="modal-header">
@@ -108,8 +109,8 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Apakah Anda yakin ?</p>
-          <p>Data ini akan di hapus !!?</p> 
+          <p>Yakin Hapus Data ?</p>
+          <p>Anda akan menghapus data. Ini tidak dapat dibatalkan. Apakah Anda benar-benar ingin melakukan nya?</p>
         </div>
         <div class="modal-footer justify-content-between">
           <button class="btn btn-sm btn-outline-info" data-dismiss="modal">Batal</button>
@@ -136,8 +137,8 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Are you sure?</p>
-          <p>You are about to delete the picture.  This cannot be undone. Do you really want to do this?</p> 
+          <p>Yakin Hapus Gambar ?</p>
+          <p>Anda akan menghapus gambar. Ini tidak dapat dibatalkan. Apakah Anda benar-benar ingin melakukan nya?</p> 
         </div>
         <div class="modal-footer justify-content-between">
           <button class="btn btn-sm btn-outline-info" data-dismiss="modal">Cancel</button>

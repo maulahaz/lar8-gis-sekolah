@@ -45,7 +45,7 @@
   	  			<h3 class="card-title">Data {{ $pageTitle }}</h3>
   	  			<div class="card-tools">
   		        	<!-- <button class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp;Add</button> -->
-                <a href="{{ url('/admin/sekolah/create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp;Add</a>
+                <a href="{{ url('/admin/sekolah/create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp;Tambah Data</a>
   		        </div>
   	  		</div>
   	  		

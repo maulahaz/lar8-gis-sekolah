@@ -109,8 +109,8 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-              <button type="submit" class="btn btn-info">Save</button>
-              <a href="{{ url('admin/sekolah') }}" class="btn btn-default float-right">Cancel</a>
+              <button type="submit" class="btn btn-sm btn-info">Simpan</button>
+              <a href="{{ url('admin/sekolah') }}" class="btn btn-sm btn-default">Batal</a>
             </div>
             <!-- /.card-footer -->
           </form>
@@ -124,6 +124,10 @@
 </section>
 @push('customJs')
 <script>
+
+  <?php  
+    $dtPosisi = (!empty($dtSekolah)) ? $dtSekolah->posisi : '-6.113715232806498, 106.13696884944088';
+  ?>
 
   var peta1 = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
@@ -152,7 +156,7 @@
     });
 
   var map = L.map('map', {
-      center: [<?= $dtSekolah->posisi ?>], //-Cilegon
+      center: [<?= $dtPosisi ;//$dtSekolah->posisi ?>], //-Cilegon
       zoom: 10,
       layers: [peta1]
   }); 
@@ -167,7 +171,7 @@
   L.control.layers(baseMaps).addTo(map); 
 
   //--Get Coordinat:
-  var curLocation = [<?= $dtSekolah->posisi ?>];
+  var curLocation = [<?= $dtPosisi ;//$dtSekolah->posisi ?>];
   map.attributionControl.setPrefix(false);
 
   var marker = new L.marker(curLocation,{

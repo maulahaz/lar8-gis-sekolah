@@ -20,7 +20,7 @@ class SekolahController extends Controller
 
     public function index()
     {
-        $this->data['pageTitle'] = 'CRUD Sekolah';
+        $this->data['pageTitle'] = 'List Data Sekolah';
 
         $this->data['dtSekolah'] = Sekolah::paginate(10);
         return view('admin.sekolah.v_index', $this->data);
@@ -30,11 +30,12 @@ class SekolahController extends Controller
     {
         $dtSekolah = null;
         $this->data['dtSekolah'] = $dtSekolah;
+        // dd($this->data['dtSekolah']);
         $this->data['optJenjang'] = [1=>'SD', 2=>'SMP', 3=>'SMA', 4=>'Kuliah'];
         $this->data['optKecamatan'] = Kecamatan::all();
         $this->data['optSatus'] = [1=>'Negeri', 2=>'Swasta'];
         // dd($this->data);
-        $this->data['pageTitle'] = 'Tambah Sekolah';
+        $this->data['pageTitle'] = 'Tambah Data Sekolah';
 
         return view('admin.sekolah.form', $this->data);
     }
@@ -43,7 +44,7 @@ class SekolahController extends Controller
     {
         $this->_validateData($request);
 
-        $post = Sekolah::create([
+        $posted = Sekolah::create([
             'nama' => $request->nama,
             'jenjang_id' => $request->jenjang,
             'status' => $request->status,
@@ -52,7 +53,12 @@ class SekolahController extends Controller
             'alamat' => 'Alamatnya di koordinat ini : '.$request->posisi,
             'notes' => $request->notes,
         ]);
-        return redirect('admin/sekolah')->with('success', 'Well done, New data created!');
+        // return redirect('admin/sekolah')->with('success', 'Well done, New data created!');
+        if ($posted) {
+            return redirect('admin/sekolah')->with('success', 'Data baru berhasil di simpan.');
+        }else{
+            return redirect()->back()->with('error', 'Error pada saat menyimpan data baru. Silahkan hubungi Administrator.');
+        }
     }
 
     public function _validateData($request)
@@ -88,7 +94,7 @@ class SekolahController extends Controller
         $this->data['optJenjang'] = [1=>'SD', 2=>'SMP', 3=>'SMA', 4=>'Kuliah'];
         $this->data['optKecamatan'] = Kecamatan::all();
         $this->data['optSatus'] = [1=>'Negeri', 2=>'Swasta'];
-        $this->data['pageTitle'] = 'Update Sekolah';
+        $this->data['pageTitle'] = 'Update Data Sekolah';
         return view('admin.sekolah.form', $this->data);
     }
 
@@ -107,10 +113,16 @@ class SekolahController extends Controller
         ];
 
         $dtSekolah = Sekolah::findOrFail($id);
+        // if ($dtSekolah->update($postedData)) {
+        //     Session::flash('success', 'Well done, Data has been updated.');
+        // }
+        // return redirect('admin/sekolah');
+
         if ($dtSekolah->update($postedData)) {
-            Session::flash('success', 'Well done, Data has been updated.');
+            return redirect('admin/sekolah')->with('success', 'Data berhasil di update.');
+        }else{
+            return redirect()->back()->with('error', 'Error pada saat update data. Silahkan hubungi Administrator.');
         }
-        return redirect('admin/sekolah');
     }
 
     public function uploadFile(Request $request, $id)
@@ -128,8 +140,14 @@ class SekolahController extends Controller
 
             $dtSekolah = Sekolah::findOrFail($id);
 
+            // if ($dtSekolah->update($postedData)) {
+            //     Session::flash('success', 'File has been uploaded.');
+            // }
+
             if ($dtSekolah->update($postedData)) {
-                Session::flash('success', 'File has been uploaded.');
+                return redirect()->back()->with('success', 'File gambar berhasil diupload.');
+            }else{
+                return redirect()->back()->with('error', 'Error pada saat upload file gambar. Silahkan hubungi Administrator.');
             }
         }
         
@@ -144,10 +162,15 @@ class SekolahController extends Controller
         $updateData['foto'] = null;
         if(file_exists($file_path)){
             unlink($file_path);
-            $dtSekolah->update($updateData);
+            // $dtSekolah->update($updateData);
+            if ($dtSekolah->update($postedData)) {
+                return redirect()->back()->with('success', 'File gambar berhasil di hapus.');
+            }else{
+                return redirect()->back()->with('error', 'Error pada saat hapus file gambar. Silahkan hubungi Administrator.');
+            }
        }
 
-       return redirect()->back()->with('success', 'File has been removed.');
+       // return redirect()->back()->with('success', 'File has been removed.');
     }
 
     public function destroy($id)
@@ -155,9 +178,9 @@ class SekolahController extends Controller
         $dtSekolah = Sekolah::findOrFail($id);
         // dd($dtSekolah);
         if ($dtSekolah->delete()) {
-            Session::flash('success', 'Data has been deleted');
+            return redirect('admin/sekolah')->with('success', 'Data berhasil di hapus.');
+        }else{
+            return redirect()->back()->with('error', 'Error pada saat hapus data. Silahkan hubungi Administrator.');
         }
-
-        return redirect('admin/sekolah');
     }
 }
