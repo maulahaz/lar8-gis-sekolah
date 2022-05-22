@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="kurses.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:bbox-paths="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:zoom="0.60221134"
+     inkscape:cx="326.29741"
+     inkscape:cy="367.81108"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g5993"
+       inkscape:export-filename="C:\Users\abu_ahyar\Desktop\kurses.png"
+       inkscape:export-xdpi="91.749443"
+       inkscape:export-ydpi="91.749443">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:28.1767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="76.700172"
+         y="86.69825"
+         id="text1486"
+         transform="scale(0.85033066,1.1760131)"
+         inkscape:export-filename="C:\Users\abu_ahyar\Desktop\kurses.png"
+         inkscape:export-xdpi="10.0875"
+         inkscape:export-ydpi="10.0875"><tspan
+           sodipodi:role="line"
+           id="tspan1484"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28.1767px;font-family:'Script MT Bold';-inkscape-font-specification:'Script MT Bold, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000080;stroke-width:0.264583"
+           x="76.700172"
+           y="86.69825">KURSES</tspan></text>
+      <g
+         id="g5984"
+         transform="translate(-35.461003,-51.670332)"
+         inkscape:export-filename="C:\Users\abu_ahyar\Desktop\kurses.png"
+         inkscape:export-xdpi="10.0875"
+         inkscape:export-ydpi="10.0875">
+        <g
+           id="g5852"
+           transform="rotate(90,86.055444,127.68513)">
+          <rect
+             style="fill:#000080;stroke-width:2"
+             id="rect5766"
+             width="16.154812"
+             height="17.397488"
+             x="84.50209"
+             y="121.78242" />
+          <rect
+             style="fill:#000080;stroke-width:2"
+             id="rect5848"
+             width="16.154812"
+             height="17.397488"
+             x="100.65691"
+             y="139.1799" />
+        </g>
+        <circle
+           style="fill:#ffff00;stroke-width:2"
+           id="path5876"
+           cx="142.28659"
+           cy="-74.560669"
+           r="5.7115884"
+           transform="rotate(90)" />
+      </g>
+    </g>
+  </g>
+</svg>

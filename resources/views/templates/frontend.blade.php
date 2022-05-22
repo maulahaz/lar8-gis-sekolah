@@ -12,9 +12,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>FrontEnd Page</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{ asset('/public/t_adminlte') }}/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{ url('/public/t_adminlte') }}/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('/public/t_adminlte') }}/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ url('/public/t_adminlte') }}/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- Leaflet -->
@@ -25,13 +25,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="{{ asset('/public/t_adminlte') }}/plugins/jquery/jquery.min.js"></script>
+<script src="{{ url('/public/t_adminlte') }}/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="{{ asset('/public/t_adminlte') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url('/public/t_adminlte') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- bs-custom-file-input -->
-<script src="{{ asset('/public/t_adminlte') }}/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script src="{{ url('/public/t_adminlte') }}/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
-<script src="{{ asset('/public/t_adminlte') }}/dist/js/adminlte.min.js"></script>
+<script src="{{ url('/public/t_adminlte') }}/dist/js/adminlte.min.js"></script>
 <!-- Leaflet -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
@@ -42,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
       <a href="#" class="navbar-brand">
-        <img src="{{ asset('/public/t_adminlte') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{{ url('/public/t_adminlte') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">AdminLTE 3</span>
       </a>
       

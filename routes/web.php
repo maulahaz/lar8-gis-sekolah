@@ -5,6 +5,17 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\TugasController;
 
+
+//------------FRONTEND - CLIENT-------------------------------------------------------------
+//--Homepage:
+Route::get('/home', 'HomeController@index');
+
+//--Member login:
+Route::get('auth/signin', 'Auth\LoginController@index');
+Route::get('auth/signout', 'Auth\LogoutController@store');
+
+//------------BACKEND - ADMIN-------------------------------------------------------------
+
 //---Auth:
 //--Cara Routing dari Traversy Tutorial:
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
